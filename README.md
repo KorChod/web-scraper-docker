@@ -14,10 +14,10 @@ Stworzyłem 3 modele:
 - AsyncResult: przetrzymujący obecny stan naszego zadania asynchronicznego jak pobranie tekstu lub zdjęć.
 
 Zdefiniowałem 5 punktów wejścia dla api:
-- '/api/scrape/text/': obsługujący metodę POST, rozpoczyna procedurę pobrania tekstu ze strony;
-- '/api/scrape/images/': obsługujący metodę POST, rozpoczyna procedurę pobrania zdjęć ze strony;
+- '/api/scrape/text/': obsługujący metodę POST, rozpoczyna procedurę pobrania tekstu ze strony. W zapytaniu należy określić parametr "url";
+- '/api/scrape/images/': obsługujący metodę POST, rozpoczyna procedurę pobrania zdjęć ze strony. W zapytaniu należy określić parametr "url";
 - '/api/webpages/': obsługujący metodę GET, wyświetla dane z wcześniej pobranych stron. Dzięki zastosowaniu klasy 'OffsetPagination' można dowolnie określić zakres i ilość wyświetlanych pozycji;
-- '/api/webpages/<id>/: obsługujący metodę GET, wyświetla dane konkretnej strony;
+- '/api/webpages/<webpage_id>/: obsługujący metodę GET, wyświetla dane dla strony o podanym id;
 - '/api/task/<task_id>/: obsługujący metodę GET, wyświetla obecny stan zleconego zadania asynchronicznego.
 
 Napisałem testy jednostkowe przy użyciu biblioteki unittest i klasy APITestcase. 
