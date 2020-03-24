@@ -6,7 +6,7 @@ Do obsługi zadań asynchronicznych wykorzystałem Celery z brokerem RabbitMQ.
 
 Aplikacja została zdokeryzowana przy użyciu Dockera aby ułatwić zarządzanie bibliotekami i zależnościami w projekcie.
 
-Do oddzielenia tekstu i zdjęć oraz usunięcia tagów HTML ze strony docelowej użyłem biblioteki BeautifulSoup.
+Do oddzielenia tekstu i zdjęć oraz usunięcia tagów HTML ze strony użyłem biblioteki BeautifulSoup.
 
 Stworzyłem 3 modele:
 - Webpage: reprezentujący stronę (posiada pola url i tekst);
