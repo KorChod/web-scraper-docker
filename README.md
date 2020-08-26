@@ -22,9 +22,6 @@ Zdefiniowałem 5 punktów wejścia dla api:
 
 Napisałem testy jednostkowe przy użyciu biblioteki unittest i klasy APITestcase. 
 
-Co należy zmienić:
-- zlecenie pobrania zdjęć dla istniejącej strony powoduje zdublowanie plików na dysku.
-
 Uwagi:
 - aby uruchomić aplikację należy zbudować obraz i uruchomić kontener wpisując w terminalu komendę 'docker-compose up'
 - po uruchomieniu kontenera musimy dokonać migracji danych. W oddzielnym oknie terminala wykonujemy komendę 'docker-compose run --rm python bash'. Bedąc w kontenerze tworzymy migracje 'python manage.py makemigrations', a następnie je wykonujemy przy użyciu 'python manage.py migrate'.
