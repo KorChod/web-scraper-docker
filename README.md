@@ -15,7 +15,7 @@ Following API endpoints were created:
 - '/api/webpages/<webpage_id>/: handling GET method. Displays details for a particular page;
 - '/api/task/<task_id>/: handling GET method. Displays current status of a particular asynch download task;
 
-- all functionalities were covered with unit tests. For this purpose "unittest" library was used and APITestcase class.
+Additionally all functionalities were covered with unit tests. For this purpose "unittest" library was used and APITestcase class.
 
 ## Setup
 - to launch this project one has to build a docker image and run container by executing the following command: `docker-compose up`.
