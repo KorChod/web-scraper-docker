@@ -1,27 +1,23 @@
-# Opis projektu
+# Web Scraper
+Web scraper project. Service is responsible for downloading content from a given page (text and images) and saved in a databse. Necessary information was scraped with a Python library BeautifulSoup. Each request is handled asynchronously with Celery and broker RabbitMQ. Application was containerized with Docker for easier dependency and library management.
 
-Frameworki które użyłem w projekcie to Django i Django REST Framework.
+## Tech Stack
+- Python
+- Django / Django REST Framework
+- Celery
+- RabbitMQ
+- Docker
 
-Do obsługi zadań asynchronicznych wykorzystałem Celery z brokerem RabbitMQ.
+## Implemented features
+Following API endpoints were created:
+- '/api/scrape/text/': handling POST request method. Responsible for downloading text from a specified page. "Url" value must be provided in the request's body;
+- '/api/webpages/': handling GET method. Displays list and details of previously downloaded pages. "OffsetPagination" class was used so that user can customize displayed ranges;
+- '/api/webpages/<webpage_id>/: handling GET method. Displays details for a particular page;
+- '/api/task/<task_id>/: handling GET method. Displays current status of a particular asynch download task;
 
-Aplikacja została zdokeryzowana przy użyciu Dockera aby ułatwić zarządzanie bibliotekami i zależnościami w projekcie.
+- all functionalities were covered with unit tests. For this purpose "unittest" library was used and APITestcase class.
 
-Do oddzielenia tekstu i zdjęć oraz usunięcia tagów HTML ze strony użyłem biblioteki BeautifulSoup.
-
-Stworzyłem 3 modele:
-- Webpage: reprezentujący stronę (posiada pola url i tekst);
-- Image: reprezentujący zdjęcia powiązane ze stroną;
-- AsyncResult: przetrzymujący obecny stan naszego zadania asynchronicznego jak pobranie tekstu lub zdjęć.
-
-Zdefiniowałem 5 punktów wejścia dla api:
-- '/api/scrape/text/': obsługujący metodę POST, rozpoczyna procedurę pobrania tekstu ze strony. W zapytaniu należy określić parametr "url";
-- '/api/scrape/images/': obsługujący metodę POST, rozpoczyna procedurę pobrania zdjęć ze strony. W zapytaniu należy określić parametr "url";
-- '/api/webpages/': obsługujący metodę GET, wyświetla dane z wcześniej pobranych stron. Dzięki zastosowaniu klasy 'OffsetPagination' można dowolnie określić zakres i ilość wyświetlanych pozycji;
-- '/api/webpages/<webpage_id>/: obsługujący metodę GET, wyświetla dane dla strony o podanym id;
-- '/api/task/<task_id>/: obsługujący metodę GET, wyświetla obecny stan zleconego zadania asynchronicznego.
-
-Napisałem testy jednostkowe przy użyciu biblioteki unittest i klasy APITestcase. 
-
-Uwagi:
-- aby uruchomić aplikację należy zbudować obraz i uruchomić kontener wpisując w terminalu komendę 'docker-compose up'
-- po uruchomieniu kontenera musimy dokonać migracji danych. W oddzielnym oknie terminala wykonujemy komendę 'docker-compose run --rm python bash'. Bedąc w kontenerze tworzymy migracje 'python manage.py makemigrations', a następnie je wykonujemy przy użyciu 'python manage.py migrate'.
+## Setup
+- to launch this project one has to build a docker image and run container by executing the following command: `docker-compose up`.
+- next step is to make data migration. In a separate terminal window execute `docker-compose run --rm python bash` command. Now, inside the running container, create migrations with `python manage.py makemigrations` and then migrate `python manage.py migrate`.
+- application should be running now. You can try to access any of the previously mentioned routes in your browser.
